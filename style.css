@@ -1,0 +1,160 @@
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+body{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	background: rgb(22, 83, 197)
+}
+
+.container{
+	width: 850px;
+	background: whitesmoke;
+	display: flex;
+	gap: 70px;
+	align-items: flex-end;
+	padding: 60px;
+	border-radius: 10px;
+}
+
+.forca-box img{
+	max-width: 270px;
+}
+
+.forca-box h1{
+	font-size: 1.45rem;
+	margin-top: 20px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+.display-palavra{
+	display: flex;
+	gap: 10px;
+	list-style: none;
+	align-items: center;
+	justify-content: center;
+}
+
+.display-palavra .letra{
+	width: 28px;
+	font-size: 2rem;
+	font-weight: 600;
+	text-align: center;
+	text-transform: uppercase;
+	margin-bottom: 40px;
+	border-bottom: 3px solid black;
+}
+
+.display-palavra .letra.adivinhada{
+	border-color: transparent;
+	margin: -40px 0 35px;
+}
+
+.game-box h4{
+	text-align: center;
+	font-size: 1.1rem;
+	font-weight: 500;
+	margin-bottom: 15px;
+}
+
+.game-box h4 b{
+	font-weight: 600;
+}
+
+.game-box .chance b{
+	color: red;
+} 
+
+.game-box .teclado{
+	display: flex;
+	gap: 5px;
+	margin-top: 40px;
+	flex-wrap: wrap;
+	justify-content: center;
+}
+
+:where(.resultados, .teclado) button{
+	color: white;
+	font-size: 1rem;
+	font-weight: 600;
+	outline: none;
+	cursor: pointer;
+	border: none;
+	background: rgb(19, 55, 173);
+	border-radius: 4px;
+	text-transform: uppercase;
+}
+.teclado button{
+	padding: 7px;
+	width: calc(100% / 9 - 5px);
+}
+
+:where(.resultados, .teclado) button:hover{
+	background: rgb(36, 74, 201);;
+}
+
+.resultados{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.6);
+}
+
+.resultados .content{
+	background: white;
+	max-width: 420px;
+	width: 100%;
+	text-align: center;
+	border-radius: 10px;
+	padding: 30px;
+}
+
+.resultados img{
+	max-width: 130px;
+	margin-bottom: 20px;
+}
+
+.resultados h4{
+	font-size: 1.53rem;
+}
+
+.resultados p{
+	font-size: 1.15rem;
+	margin: 15px 0 30px ;
+	font-weight: 500;
+}
+
+.resultados p b {
+	color: rgb(19, 55, 173);
+	font-weight: 600;
+}
+
+.resultados .button{
+	padding: 12px 23px;
+}
+
+@media (max-width: 762px) {
+	.container{
+		flex-direction: column;
+		padding: 30px 15px;
+		align-items: center;
+	}
+	.forca-box img {
+		max-width: 200px;
+	}
+	.forca-box h1 {
+		display: none;
+	}
+}
