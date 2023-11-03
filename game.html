@@ -4,14 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <script src="script.js" defer></script>
+    <script src="word-list.js"></script>
 </head>
 <body>
     <div class="resultados">
         <div class="content">
             <img src="images/lost.gif" alt="gif">
             <h4>Você perdeu!</h4>
-            <p>A palavra era: <b>xxx</b></p>
+            <p>A palavra correta era: <b>xxx</b></p>
             <button class="jogar-novamente">Jogar novamente</button>
         </div>
     </div>
@@ -21,14 +22,7 @@
             <h1>Jogo da Forca!</h1>
         </div>
             <div class="game-box">
-                <ul class="display-palavra">
-                    <li class="letra"></li>
-                    <li class="letra"></li>
-                    <li class="letra adivinhada"></li>
-                    <li class="letra"></li>
-                    <li class="letra"></li>
-                    <li class="letra"></li>
-                </ul>
+                <ul class="display-palavra"></ul>
                 <h4 class="dica">
                     Dica:
                 </h4>
@@ -36,15 +30,7 @@
                     Chances:
                     <b> 0 / 6</b>
                 </h4>
-            <div class="teclado">
-                <button>a</button><button>b</button><button>c</button><button>d</button>
-                <button>e</button><button>f</button><button>g</button><button>h</button>
-                <button>i</button><button>j</button><button>k</button><button>l</button>
-                <button>m</button><button>n</button><button>o</button><button>p</button>
-                <button>q</button><button>r</button><button>s</button><button>t</button>
-                <button>u</button><button>v</button><button>w</button><button>x</button>
-                <button>y</button><button>z</button>
-            </div>
+            <div class="teclado"></div>
         </div>
     </div>
 </body>
