@@ -11,7 +11,7 @@ const maxGuesses = 6;
 const resetGame = () => {
     correctLetters = [];
     contagemErros = 0;
-    forcaImagem.scr = `images/hangman-${contagemErros}.svg`;
+    forcaImagem.scr = `static/hangman-${contagemErros}.svg`;
     chancesText.innerText = `${contagemErros} / ${maxGuesses}`;
     tecladoDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
     palavraDisplay.innerHTML = currentWord.split("").map(() => `<li class="letra"></li>` ).join("");
@@ -29,7 +29,7 @@ const pegarPalavra = () => {
 const gameOver = (Ganhou) => {
     setTimeout(() => {
         const modalText = Ganhou ? `Você acertou a palavra:` : `A palavra correta era:`;
-        gameModal.querySelector("img").scr = `images/${Ganhou ? 'ganhou' : 'perdeu'}.gif`
+        gameModal.querySelector("img").scr = `static/${Ganhou ? 'ganhou' : 'perdeu'}.gif`
         gameModal.querySelector("h4").innerText = `${Ganhou ? 'Parabéns' : 'Fim de Jogo'}`
         gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
         gameModal.classList.add("show");
@@ -47,7 +47,7 @@ const initGame = (button, clickedLetter) => {
         })
     } else{
         contagemErros++;
-        forcaImagem.scr = `images/hangman-${contagemErros}.svg`;
+        forcaImagem.scr = `static/hangman-${contagemErros}.svg`;
     }
     button.disabled = true;
     chancesText.innerText = `${contagemErros} / ${maxGuesses}`;
