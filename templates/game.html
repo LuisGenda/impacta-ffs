@@ -1,26 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <script type="text/javascript" src="{{ url_for('static',filename='word-list.js') }}"></script>
-    <script type="text/javascript" src="{{ url_for('static',filename='script.js') }}" defer></script>
-
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <script src="{{url_for('static', filename='JS/script.js')}}" defer></script>
 </head>
 <body>
     <div class="resultados">
         <div class="content">
-            <img src="static/lost.gif" alt="gif">
+            <img src="{{url_for('static', filename='images/victory.gif')}}" alt="gif">
             <h4>Você perdeu!</h4>
             <p>A palavra correta era: <b>xxx</b></p>
-            <button class="jogar-novamente">Jogar novamente</button>
+            <button type=submit class="jogar-novamente">Jogar novamente</button>
         </div>
     </div>
     <div class="container">
         <div class="forca-box">
-            <img src="static/hangman-0.svg" alt="forca.img">
+            <img src="{{url_for('static', filename='images/hangman-0.svg')}}" alt="forca.img">
             <h1>Jogo da Forca!</h1>
+            <p class="word">{{word}}</p>
+            <p class="hint">{{hint}}</p>
         </div>
             <div class="game-box">
                 <ul class="display-palavra"></ul>

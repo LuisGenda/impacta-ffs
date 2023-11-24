@@ -1,5 +1,7 @@
 from flask import Flask
-from game.jogo import games
+from pagina import games
+
+
 
 def create_app():
     app = Flask(__name__)
@@ -15,4 +17,5 @@ def create_app():
 app = create_app()
 
 if __name__ == '__main__':
+
     app.run(host='localhost', debug=True)

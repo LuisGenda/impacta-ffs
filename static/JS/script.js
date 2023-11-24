@@ -4,6 +4,8 @@ const chancesText = document.querySelector(".chances b");
 const tecladoDiv = document.querySelector(".teclado");
 const gameModal = document.querySelector(".resultados");
 const jogarNovamenteBtn = document.querySelector(".jogar-novamente");
+const palavra = document.querySelector(".word").innerHTML
+const dica = document.querySelector(".hint").innerHTML
 
 let currentWord, correctLetters, contagemErros; 
 const maxGuesses = 6;
@@ -11,7 +13,7 @@ const maxGuesses = 6;
 const resetGame = () => {
     correctLetters = [];
     contagemErros = 0;
-    forcaImagem.scr = `static/hangman-${contagemErros}.svg`;
+    forcaImagem.scr = `images/hangman-${contagemErros}.svg`;
     chancesText.innerText = `${contagemErros} / ${maxGuesses}`;
     tecladoDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
     palavraDisplay.innerHTML = currentWord.split("").map(() => `<li class="letra"></li>` ).join("");
@@ -19,17 +21,17 @@ const resetGame = () => {
 }
 
 const pegarPalavra = () => {
-    const { palavra, dica } = wordList[Math.floor(Math.random() * wordList.length)];
     currentWord = palavra;
     console.log(palavra);
-    document.querySelector(".dica b"). innerText = dica
+    document.querySelector(".dica").innerText = ("Dica: ")+dica
     resetGame();
 }
 
 const gameOver = (Ganhou) => {
     setTimeout(() => {
         const modalText = Ganhou ? `Você acertou a palavra:` : `A palavra correta era:`;
-        gameModal.querySelector("img").scr = `static/${Ganhou ? 'ganhou' : 'perdeu'}.gif`
+        console.log(Ganhou)
+        gameModal.querySelector("img").scr = `images/${Ganhou ? 'victory' : 'lost'}.gif`
         gameModal.querySelector("h4").innerText = `${Ganhou ? 'Parabéns' : 'Fim de Jogo'}`
         gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
         gameModal.classList.add("show");
@@ -41,13 +43,17 @@ const initGame = (button, clickedLetter) => {
         [...currentWord].forEach((letter, index) => {
             if(letter === clickedLetter) {
                 correctLetters.push(letter)
-                palavraDisplay.querySelector("li")[index].innerText = letter;
-                palavraDisplay.querySelector("li")[index].classList.add("Adivinhada");
+                console.log(index)
+                console.log(letter)
+                var li = palavraDisplay.getElementsByTagName("li")
+                li[index].innerHTML = letter;
+                li[index].classList.add("Adivinhada");
             }
         })
     } else{
         contagemErros++;
-        forcaImagem.scr = `static/hangman-${contagemErros}.svg`;
+        console.log(contagemErros)
+        forcaImagem.scr = `images/hangman-${contagemErros}.svg`;
     }
     button.disabled = true;
     chancesText.innerText = `${contagemErros} / ${maxGuesses}`;
@@ -64,4 +70,8 @@ for (let i = 97; i < 122; i++) {
 }
 
 pegarPalavra();
-jogarNovamenteBtn.addEventListener("click", pegarPalavra);
+
+const reload = () =>{
+    window.location.href = "/game";
+}
+jogarNovamenteBtn.addEventListener("click", reload);
