@@ -9,7 +9,7 @@
 <body>
     <div class="resultados">
         <div class="content">
-            <img src="{{url_for('static', filename='images/victory.gif')}}" alt="gif">
+            <img id="winlose" src="" alt="gif">
             <h4>Você perdeu!</h4>
             <p>A palavra correta era: <b>xxx</b></p>
             <button type=submit class="jogar-novamente">Jogar novamente</button>
@@ -17,7 +17,7 @@
     </div>
     <div class="container">
         <div class="forca-box">
-            <img src="{{url_for('static', filename='images/hangman-0.svg')}}" alt="forca.img">
+            <img id="img-forca" src="{{url_for('static', filename='images/hangman-0.svg')}}" alt="forca.img">
             <h1>Jogo da Forca!</h1>
             <p class="word">{{word}}</p>
             <p class="hint">{{hint}}</p>

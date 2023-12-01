@@ -1,11 +1,12 @@
-const forcaImagem = document.querySelector(".forca-box img");
+const forcaImagem = document.getElementById("img-forca");
 const palavraDisplay = document.querySelector(".display-palavra");
 const chancesText = document.querySelector(".chances b");
 const tecladoDiv = document.querySelector(".teclado");
 const gameModal = document.querySelector(".resultados");
 const jogarNovamenteBtn = document.querySelector(".jogar-novamente");
-const palavra = document.querySelector(".word").innerHTML
-const dica = document.querySelector(".hint").innerHTML
+const palavra = document.querySelector(".word").innerHTML;
+const dica = document.querySelector(".hint").innerHTML;
+const winorlose = document.getElementById("winlose");
 
 let currentWord, correctLetters, contagemErros; 
 const maxGuesses = 6;
@@ -13,7 +14,6 @@ const maxGuesses = 6;
 const resetGame = () => {
     correctLetters = [];
     contagemErros = 0;
-    forcaImagem.scr = `images/hangman-${contagemErros}.svg`;
     chancesText.innerText = `${contagemErros} / ${maxGuesses}`;
     tecladoDiv.querySelectorAll("button").forEach(btn => btn.disabled = false);
     palavraDisplay.innerHTML = currentWord.split("").map(() => `<li class="letra"></li>` ).join("");
@@ -31,12 +31,18 @@ const gameOver = (Ganhou) => {
     setTimeout(() => {
         const modalText = Ganhou ? `Você acertou a palavra:` : `A palavra correta era:`;
         console.log(Ganhou)
-        gameModal.querySelector("img").scr = `images/${Ganhou ? 'victory' : 'lost'}.gif`
+        winorlose.setAttribute('src', `/static/images/${Ganhou ? 'victory' : 'lost'}.gif`);
         gameModal.querySelector("h4").innerText = `${Ganhou ? 'Parabéns' : 'Fim de Jogo'}`
         gameModal.querySelector("p").innerHTML = `${modalText} <b>${currentWord}</b>`;
-        gameModal.classList.add("show");
+        setInterval(showwinlose, 200);
     }, 300); 
 }
+
+const showwinlose = () =>{
+    gameModal.classList.add("show");
+}
+
+
 
 const initGame = (button, clickedLetter) => {
     if(currentWord.includes(clickedLetter)){
@@ -53,7 +59,7 @@ const initGame = (button, clickedLetter) => {
     } else{
         contagemErros++;
         console.log(contagemErros)
-        forcaImagem.scr = `images/hangman-${contagemErros}.svg`;
+        forcaImagem.setAttribute('src', "static/images/hangman-"+contagemErros+".svg");
     }
     button.disabled = true;
     chancesText.innerText = `${contagemErros} / ${maxGuesses}`;
